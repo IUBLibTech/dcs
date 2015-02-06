@@ -32,10 +32,14 @@ class CatalogController < ApplicationController
     # solr field configuration for search results/index views
     config.index.title_field = 'title_display'
     config.index.display_type_field = 'format'
+    config.index.show_link_field = 'context_url_s'
+    config.index.thumbnail_field = 'preview_url_s'
+
 
     # solr field configuration for document/show views
     #config.show.title_field = 'title_display'
     #config.show.display_type_field = 'format'
+    # config.show.route = 'context_url_s'
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
@@ -96,6 +100,7 @@ class CatalogController < ApplicationController
     config.add_index_field 'published_display', :label => 'Published'
     config.add_index_field 'published_vern_display', :label => 'Published'
     config.add_index_field 'lc_callnum_display', :label => 'Call number'
+
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
@@ -187,4 +192,23 @@ class CatalogController < ApplicationController
     config.spell_max = 5
   end
 
+  # get single document from the solr index
+  def show
+    @response, @document = get_solr_response_for_doc_id params[:id]
+
+    respond_to do |format|
+      format.html {redirect_to @document['context_url_s'].first}
+
+      format.json { render json: {response: {document: @document}}}
+
+      # Add all dynamically added (such as by document extensions)
+      # export formats.
+      @document.export_formats.each_key do | format_name |
+        # It's important that the argument to send be a symbol;
+        # if it's a string, it makes Rails unhappy for unclear reasons.
+        format.send(format_name.to_sym) { render :text => @document.export_as(format_name), :layout => false }
+      end
+
+    end
+  end
 end
