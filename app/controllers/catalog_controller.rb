@@ -192,23 +192,18 @@ class CatalogController < ApplicationController
     config.spell_max = 5
   end
 
-  # get single document from the solr index
+  # If solr contains a context_url, redirect to it.
+  # Otherwise, do the normal Blacklight stuff.
   def show
     @response, @document = get_solr_response_for_doc_id params[:id]
 
-    respond_to do |format|
-      format.html {redirect_to @document['context_url_s'].first}
+    show_purl = @document['context_url_s'].try :first
 
-      format.json { render json: {response: {document: @document}}}
-
-      # Add all dynamically added (such as by document extensions)
-      # export formats.
-      @document.export_formats.each_key do | format_name |
-        # It's important that the argument to send be a symbol;
-        # if it's a string, it makes Rails unhappy for unclear reasons.
-        format.send(format_name.to_sym) { render :text => @document.export_as(format_name), :layout => false }
-      end
-
+    if show_purl.blank?
+      super
+    else
+      redirect_to show_purl
     end
   end
+
 end
