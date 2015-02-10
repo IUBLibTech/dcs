@@ -180,7 +180,7 @@ class CatalogController < ApplicationController
     end
 
     config.add_search_field('item_id') do |field|
-
+      field.label = 'Item ID'
     end
 
     # "sort results by" select (pulldown)
