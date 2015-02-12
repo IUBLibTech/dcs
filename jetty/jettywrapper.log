@@ -1,0 +1,116 @@
+0    [main] INFO  org.eclipse.jetty.server.Server  – jetty-8.1.10.v20130312
+24   [main] INFO  org.eclipse.jetty.deploy.providers.ScanningAppProvider  – Deployment monitor /home/dlpierce/git/DCS/dcs/jetty/contexts at interval 0
+36   [main] INFO  org.eclipse.jetty.deploy.DeploymentManager  – Deployable added: /home/dlpierce/git/DCS/dcs/jetty/contexts/solr.xml
+89   [main] INFO  org.eclipse.jetty.webapp.WebInfConfiguration  – Extract jar:file:/home/dlpierce/git/DCS/dcs/jetty/webapps/solr.war!/ to /home/dlpierce/git/DCS/dcs/jetty/solr-webapp/webapp
+1226 [main] INFO  org.eclipse.jetty.webapp.StandardDescriptorProcessor  – NO JSP Support for /solr, did not find org.apache.jasper.servlet.JspServlet
+1332 [main] INFO  org.apache.solr.servlet.SolrDispatchFilter  – SolrDispatchFilter.init()
+1361 [main] INFO  org.apache.solr.core.SolrResourceLoader  – JNDI not configured for solr (NoInitialContextEx)
+1362 [main] INFO  org.apache.solr.core.SolrResourceLoader  – using system property solr.solr.home: /home/dlpierce/git/DCS/dcs/jetty/solr
+1374 [main] INFO  org.apache.solr.core.SolrResourceLoader  – new SolrResourceLoader for directory: '/home/dlpierce/git/DCS/dcs/jetty/solr/'
+1376 [main] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/dlpierce/git/DCS/dcs/jetty/solr/lib/solr-clustering-4.9.0.jar' to classloader
+1376 [main] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/dlpierce/git/DCS/dcs/jetty/solr/lib/contrib/' to classloader
+1376 [main] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/dlpierce/git/DCS/dcs/jetty/solr/lib/solr-langid-4.9.0.jar' to classloader
+1376 [main] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/dlpierce/git/DCS/dcs/jetty/solr/lib/solr-analysis-extras-4.9.0.jar' to classloader
+1487 [main] INFO  org.apache.solr.core.ConfigSolr  – Loading container configuration from /home/dlpierce/git/DCS/dcs/jetty/solr/solr.xml
+1841 [main] INFO  org.apache.solr.core.CoreContainer  – New CoreContainer 790722099
+1842 [main] INFO  org.apache.solr.core.CoreContainer  – Loading cores into CoreContainer [instanceDir=/home/dlpierce/git/DCS/dcs/jetty/solr/]
+1844 [main] INFO  org.apache.solr.core.CoreContainer  – loading shared library: /home/dlpierce/git/DCS/dcs/jetty/solr/lib
+1845 [main] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/dlpierce/git/DCS/dcs/jetty/solr/lib/solr-clustering-4.9.0.jar' to classloader
+1845 [main] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/dlpierce/git/DCS/dcs/jetty/solr/lib/contrib/' to classloader
+1845 [main] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/dlpierce/git/DCS/dcs/jetty/solr/lib/solr-langid-4.9.0.jar' to classloader
+1846 [main] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/dlpierce/git/DCS/dcs/jetty/solr/lib/solr-analysis-extras-4.9.0.jar' to classloader
+1862 [main] INFO  org.apache.solr.handler.component.HttpShardHandlerFactory  – Setting socketTimeout to: 0
+1863 [main] INFO  org.apache.solr.handler.component.HttpShardHandlerFactory  – Setting urlScheme to: null
+1866 [main] INFO  org.apache.solr.handler.component.HttpShardHandlerFactory  – Setting connTimeout to: 0
+1866 [main] INFO  org.apache.solr.handler.component.HttpShardHandlerFactory  – Setting maxConnectionsPerHost to: 20
+1866 [main] INFO  org.apache.solr.handler.component.HttpShardHandlerFactory  – Setting corePoolSize to: 0
+1866 [main] INFO  org.apache.solr.handler.component.HttpShardHandlerFactory  – Setting maximumPoolSize to: 2147483647
+1867 [main] INFO  org.apache.solr.handler.component.HttpShardHandlerFactory  – Setting maxThreadIdleTime to: 5
+1868 [main] INFO  org.apache.solr.handler.component.HttpShardHandlerFactory  – Setting sizeOfQueue to: -1
+1868 [main] INFO  org.apache.solr.handler.component.HttpShardHandlerFactory  – Setting fairnessPolicy to: false
+2126 [main] INFO  org.apache.solr.logging.LogWatcher  – SLF4J impl is org.slf4j.impl.Log4jLoggerFactory
+2127 [main] INFO  org.apache.solr.logging.LogWatcher  – Registering Log Listener [Log4j (org.slf4j.impl.Log4jLoggerFactory)]
+2132 [main] INFO  org.apache.solr.core.CoreContainer  – Host Name: 
+2210 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – new SolrResourceLoader for directory: '/home/dlpierce/git/DCS/dcs/jetty/solr/blacklight-core/'
+2294 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.SolrConfig  – Adding specified lib dirs to ClassLoader
+2295 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/dlpierce/git/DCS/dcs/jetty/solr/lib/contrib/analysis-extras/lib/morfologik-stemming-1.7.1.jar' to classloader
+2295 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/dlpierce/git/DCS/dcs/jetty/solr/lib/contrib/analysis-extras/lib/icu4j-53.1.jar' to classloader
+2295 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/dlpierce/git/DCS/dcs/jetty/solr/lib/contrib/analysis-extras/lib/morfologik-fsa-1.7.1.jar' to classloader
+2295 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/dlpierce/git/DCS/dcs/jetty/solr/lib/contrib/analysis-extras/lib/morfologik-polish-1.7.1.jar' to classloader
+2296 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/dlpierce/git/DCS/dcs/jetty/solr/lib/contrib/analysis-extras/lucene-libs/lucene-analyzers-smartcn-4.9.0.jar' to classloader
+2296 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/dlpierce/git/DCS/dcs/jetty/solr/lib/contrib/analysis-extras/lucene-libs/lucene-analyzers-icu-4.9.0.jar' to classloader
+2296 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/dlpierce/git/DCS/dcs/jetty/solr/lib/contrib/analysis-extras/lucene-libs/lucene-analyzers-morfologik-4.9.0.jar' to classloader
+2296 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/dlpierce/git/DCS/dcs/jetty/solr/lib/contrib/analysis-extras/lucene-libs/lucene-analyzers-stempel-4.9.0.jar' to classloader
+2352 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.SolrConfig  – Using Lucene MatchVersion: LUCENE_4_0
+2416 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.Config  – Loaded SolrConfig: solrconfig.xml
+2420 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.schema.IndexSchema  – Reading Solr Schema from schema.xml
+2447 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.schema.IndexSchema  – [blacklight-core] Schema name=Blacklight Demo Index
+2527 [coreLoadExecutor-5-thread-1] WARN  org.apache.solr.core.SolrResourceLoader  – Solr loaded a deprecated plugin/analysis class [solr.IntField]. Please consult documentation how to replace it accordingly.
+2535 [coreLoadExecutor-5-thread-1] WARN  org.apache.solr.core.SolrResourceLoader  – Solr loaded a deprecated plugin/analysis class [solr.LongField]. Please consult documentation how to replace it accordingly.
+2538 [coreLoadExecutor-5-thread-1] WARN  org.apache.solr.core.SolrResourceLoader  – Solr loaded a deprecated plugin/analysis class [solr.FloatField]. Please consult documentation how to replace it accordingly.
+2542 [coreLoadExecutor-5-thread-1] WARN  org.apache.solr.core.SolrResourceLoader  – Solr loaded a deprecated plugin/analysis class [solr.DoubleField]. Please consult documentation how to replace it accordingly.
+2544 [coreLoadExecutor-5-thread-1] WARN  org.apache.solr.core.SolrResourceLoader  – Solr loaded a deprecated plugin/analysis class [solr.DateField]. Please consult documentation how to replace it accordingly.
+2673 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.schema.IndexSchema  – default search field in schema is text
+2673 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.schema.IndexSchema  – query parser default operator is OR
+2674 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.schema.IndexSchema  – unique key field: id
+2814 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.CoreContainer  – Creating SolrCore 'blacklight-core' using configuration from instancedir /home/dlpierce/git/DCS/dcs/jetty/solr/blacklight-core/
+2836 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.SolrCore  – solr.StandardDirectoryFactory
+2846 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.SolrCore  – [blacklight-core] Opening new SolrCore at /home/dlpierce/git/DCS/dcs/jetty/solr/blacklight-core/, dataDir=/home/dlpierce/git/DCS/dcs/jetty/solr/blacklight-core/data/
+2847 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.SolrCore  – JMX monitoring not detected for core: blacklight-core
+2859 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.CachingDirectoryFactory  – return new directory for /home/dlpierce/git/DCS/dcs/jetty/solr/blacklight-core/data
+2882 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.SolrCore  – New index directory detected: old=null new=/home/dlpierce/git/DCS/dcs/jetty/solr/blacklight-core/data/index/
+2883 [coreLoadExecutor-5-thread-1] WARN  org.apache.solr.core.SolrCore  – [blacklight-core] Solr index directory '/home/dlpierce/git/DCS/dcs/jetty/solr/blacklight-core/data/index' doesn't exist. Creating new index...
+2890 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.CachingDirectoryFactory  – return new directory for /home/dlpierce/git/DCS/dcs/jetty/solr/blacklight-core/data/index
+2982 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.SolrCore  – SolrDeletionPolicy.onCommit: commits: num=1
+	commit{dir=/home/dlpierce/git/DCS/dcs/jetty/solr/blacklight-core/data/index,segFN=segments_1,generation=1}
+2983 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.SolrCore  – newest commit generation = 1
+3093 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.SolrCore  – no updateRequestProcessorChain defined as default, creating implicit default
+3096 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.RequestHandlers  – adding lazy requestHandler: solr.ReplicationHandler
+3097 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.RequestHandlers  – created /replication: solr.ReplicationHandler
+3100 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.RequestHandlers  – created standard: solr.StandardRequestHandler
+3100 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.RequestHandlers  – adding lazy requestHandler: solr.FieldAnalysisRequestHandler
+3100 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.RequestHandlers  – created /analysis/field: solr.FieldAnalysisRequestHandler
+3102 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.RequestHandlers  – created /update: solr.UpdateRequestHandler
+3103 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.RequestHandlers  – created /admin/: org.apache.solr.handler.admin.AdminHandlers
+3105 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.RequestHandlers  – created /admin/ping: solr.PingRequestHandler
+3108 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.RequestHandlers  – created search: solr.SearchHandler
+3109 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.RequestHandlers  – created document: solr.SearchHandler
+3109 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.RequestHandlers  – created advanced: solr.SearchHandler
+3131 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.handler.loader.XMLLoader  – xsltCacheLifetimeSeconds=60
+3139 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.SolrCore  – Hard AutoCommit: disabled
+3139 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.SolrCore  – Soft AutoCommit: disabled
+3145 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.SolrCore  – SolrDeletionPolicy.onInit: commits: num=1
+	commit{dir=/home/dlpierce/git/DCS/dcs/jetty/solr/blacklight-core/data/index,segFN=segments_1,generation=1}
+3145 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.SolrCore  – newest commit generation = 1
+3154 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.search.SolrIndexSearcher  – Opening Searcher@274c5495[blacklight-core] main
+3161 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.rest.ManagedResourceStorage  – File-based storage initialized to use dir: /home/dlpierce/git/DCS/dcs/jetty/solr/blacklight-core/conf
+3161 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.rest.RestManager  – Initializing RestManager with initArgs: {storageDir=/home/dlpierce/git/DCS/dcs/jetty/solr/blacklight-core/conf/}
+3168 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.rest.ManagedResourceStorage  – Reading _rest_managed.json using file:dir=/home/dlpierce/git/DCS/dcs/jetty/solr/blacklight-core/conf
+3169 [coreLoadExecutor-5-thread-1] WARN  org.apache.solr.rest.ManagedResource  – No stored data found for /rest/managed
+3169 [coreLoadExecutor-5-thread-1] WARN  org.apache.solr.rest.ManagedResource  – No registered observers for /rest/managed
+3169 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.rest.RestManager  – Initializing 0 registered ManagedResources
+3169 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.handler.component.SpellCheckComponent  – Initializing spell checkers
+3183 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.handler.component.SpellCheckComponent  – Registering newSearcher listener for spellchecker: default
+3203 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.handler.component.SpellCheckComponent  – Registering newSearcher listener for spellchecker: author
+3224 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.handler.component.SpellCheckComponent  – Registering newSearcher listener for spellchecker: subject
+3235 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.handler.component.SpellCheckComponent  – Registering newSearcher listener for spellchecker: title
+3235 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.handler.component.SpellCheckComponent  – No queryConverter defined, using default converter
+3249 [coreLoadExecutor-5-thread-1] INFO  org.apache.solr.core.CoreContainer  – registering core: blacklight-core
+3249 [searcherExecutor-6-thread-1] INFO  org.apache.solr.core.SolrCore  – [blacklight-core] Registered new searcher Searcher@274c5495[blacklight-core] main{StandardDirectoryReader(segments_1:1:nrt)}
+3251 [main] INFO  org.apache.solr.servlet.SolrDispatchFilter  – user.dir=/home/dlpierce/git/DCS/dcs/jetty
+3252 [main] INFO  org.apache.solr.servlet.SolrDispatchFilter  – SolrDispatchFilter.init() done
+3319 [main] INFO  org.eclipse.jetty.server.AbstractConnector  – Started SocketConnector@0.0.0.0:8983
+5410 [qtp125622176-12] INFO  org.apache.solr.update.processor.LogUpdateProcessor  – [blacklight-core] webapp=/solr path=/update params={wt=ruby} {add=[00282214, 00282371, 00313831, 00314247, 43037890, 53029833, 77826928, 78908283, 79930185, 85910001, ... (30 adds)]} 0 296
+5440 [qtp125622176-13] INFO  org.apache.solr.update.UpdateHandler  – start commit{,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+5623 [qtp125622176-13] INFO  org.apache.solr.core.SolrCore  – SolrDeletionPolicy.onCommit: commits: num=2
+	commit{dir=/home/dlpierce/git/DCS/dcs/jetty/solr/blacklight-core/data/index,segFN=segments_1,generation=1}
+	commit{dir=/home/dlpierce/git/DCS/dcs/jetty/solr/blacklight-core/data/index,segFN=segments_2,generation=2}
+5624 [qtp125622176-13] INFO  org.apache.solr.core.SolrCore  – newest commit generation = 2
+5644 [qtp125622176-13] INFO  org.apache.solr.search.SolrIndexSearcher  – Opening Searcher@74cafab0[blacklight-core] main
+5646 [searcherExecutor-6-thread-1] INFO  org.apache.solr.handler.component.SpellCheckComponent  – Building spell index for spell checker: default
+5650 [qtp125622176-13] INFO  org.apache.solr.update.UpdateHandler  – end_commit_flush
+5863 [searcherExecutor-6-thread-1] INFO  org.apache.solr.handler.component.SpellCheckComponent  – Building spell index for spell checker: author
+5922 [searcherExecutor-6-thread-1] INFO  org.apache.solr.handler.component.SpellCheckComponent  – Building spell index for spell checker: subject
+6016 [searcherExecutor-6-thread-1] INFO  org.apache.solr.handler.component.SpellCheckComponent  – Building spell index for spell checker: title
+6136 [searcherExecutor-6-thread-1] INFO  org.apache.solr.core.SolrCore  – [blacklight-core] Registered new searcher Searcher@74cafab0[blacklight-core] main{StandardDirectoryReader(segments_2:3:nrt _0(4.9):C30)}
+6137 [qtp125622176-13] INFO  org.apache.solr.update.processor.LogUpdateProcessor  – [blacklight-core] webapp=/solr path=/update params={wt=ruby} {commit=} 0 698
