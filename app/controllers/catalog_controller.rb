@@ -39,7 +39,7 @@ class CatalogController < ApplicationController
     # solr field configuration for document/show views
     #config.show.title_field = 'title_display'
     #config.show.display_type_field = 'format'
-    # config.show.route = 'context_url_s'
+    # config.show.route = {action: :purl}
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
@@ -199,16 +199,17 @@ class CatalogController < ApplicationController
 
   # If solr contains a context_url, redirect to it.
   # Otherwise, do the normal Blacklight stuff.
-  def show
-    @response, @document = get_solr_response_for_doc_id params[:id]
-
-    show_purl = @document['context_url_s'].try :first
-
-    if show_purl.blank?
-      super
-    else
-      redirect_to show_purl
-    end
-  end
+  # Disabled in favor of rendering links instead of redirects.
+  # def show
+  #   @response, @document = get_solr_response_for_doc_id params[:id]
+  #
+  #   show_purl = @document['context_url_s'].try :first
+  #
+  #   if show_purl.blank?
+  #     super
+  #   else
+  #     redirect_to show_purl
+  #   end
+  # end
 
 end
