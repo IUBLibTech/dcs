@@ -12,6 +12,10 @@ class CatalogController < ApplicationController
       :rows => 10
     }
 
+    config.advanced_search = {
+        :qt => 'standard'
+    }
+
     # solr path which will be added to solr base url before the other solr params.
     #config.solr_path = 'select'
 
@@ -30,7 +34,7 @@ class CatalogController < ApplicationController
     #}
 
     # solr field configuration for search results/index views
-    config.index.title_field = 'title_display'
+    config.index.title_field = 'title_t'
     config.index.display_type_field = 'format'
     config.index.show_link_field = 'context_url_s'
     config.index.thumbnail_field = 'preview_url_s'
@@ -89,36 +93,24 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
-    config.add_index_field 'title_display', :label => 'Title'
-    config.add_index_field 'title_vern_display', :label => 'Title'
-    config.add_index_field 'author_display', :label => 'Author'
-    config.add_index_field 'author_vern_display', :label => 'Author'
+    config.add_index_field 'title_t', :label => 'Title'
     config.add_index_field 'coll_id', :label => 'Collection'
     config.add_index_field 'source', :label => 'Source'
     config.add_index_field 'format', :label => 'Format'
-    config.add_index_field 'language_facet', :label => 'Language'
-    config.add_index_field 'published_display', :label => 'Published'
-    config.add_index_field 'published_vern_display', :label => 'Published'
-    config.add_index_field 'lc_callnum_display', :label => 'Call number'
+    # config.add_index_field 'subject_geographic_t', :label => 'Place'
+    # config.add_index_field 'genre_t', :label => 'Genre'
+    # config.add_index_field 'abstract_t', :label => 'Abstract'
     config.add_index_field 'item_id', :label => 'Item ID'
 
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
-    config.add_show_field 'title_display', :label => 'Title'
-    config.add_show_field 'title_vern_display', :label => 'Title'
-    config.add_show_field 'subtitle_display', :label => 'Subtitle'
-    config.add_show_field 'subtitle_vern_display', :label => 'Subtitle'
-    config.add_show_field 'author_display', :label => 'Author'
-    config.add_show_field 'author_vern_display', :label => 'Author'
+    config.add_show_field 'title_t', :label => 'Title'
+    config.add_show_field 'coll_id', :label => 'Collection'
+    config.add_show_field 'source', :label => 'Source'
     config.add_show_field 'format', :label => 'Format'
-    config.add_show_field 'url_fulltext_display', :label => 'URL'
-    config.add_show_field 'url_suppl_display', :label => 'More Information'
-    config.add_show_field 'language_facet', :label => 'Language'
-    config.add_show_field 'published_display', :label => 'Published'
-    config.add_show_field 'published_vern_display', :label => 'Published'
-    config.add_show_field 'lc_callnum_display', :label => 'Call number'
-    config.add_show_field 'isbn_t', :label => 'ISBN'
+    config.add_show_field 'item_id', :label => 'Item ID'
+
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
@@ -138,14 +130,26 @@ class CatalogController < ApplicationController
     # solr request handler? The one set in config[:default_solr_parameters][:qt],
     # since we aren't specifying it otherwise.
 
-    config.add_search_field 'all_fields', :label => 'All Fields'
+    config.add_search_field 'all_fields', :label => 'Keywords' do |field|
+      field.include_in_simple_select = true
+      field.include_in_advanced_search = false
+    end
 
+    config.add_search_field 'All Fields' do |field|
+      field.solr_parameters = {:qf => "metatext"}
+      field.include_in_simple_select = false
+      field.include_in_advanced_search = true
+    end
 
     # Now we see how to over-ride Solr request handler defaults, in this
     # case for a BL "search field", which is really a dismax aggregate
     # of Solr search fields.
 
-    config.add_search_field('title') do |field|
+    config.add_search_field('Title') do |field|
+      field.solr_parameters = {:qf => "title_t"}
+      field.include_in_simple_select = false
+      field.include_in_advanced_search = true
+
       # solr_parameters hash are sent to Solr as ordinary url query params.
       # field.solr_parameters = { :'spellcheck.dictionary' => 'title' }
 
@@ -153,35 +157,71 @@ class CatalogController < ApplicationController
       # syntax, as eg {! qf=$title_qf }. This is neccesary to use
       # Solr parameter de-referencing like $title_qf.
       # See: http://wiki.apache.org/solr/LocalParams
-      field.solr_local_parameters = {
-        :qf => '$title_qf',
-        :pf => '$title_pf'
-      }
+      # field.solr_local_parameters = {
+      #   :qf => '$title_qf',
+      #   :pf => '$title_pf'
+      # }
     end
 
-    config.add_search_field('author') do |field|
+    config.add_search_field('Collection') do |field|
+      field.solr_parameters = {:qf => "coll_id"}
+      field.include_in_simple_select = false
+      field.include_in_advanced_search = true
       # field.solr_parameters = { :'spellcheck.dictionary' => 'author' }
-      field.solr_local_parameters = {
-        :qf => '$author_qf',
-        :pf => '$author_pf'
-      }
+      # field.solr_local_parameters = {
+      #   :qf => '$coll_qf',
+      #   :pf => '$coll_pf'
+      # }
     end
 
-    # Specifying a :qt only to show it's possible, and so our internal automated
-    # tests can test it. In this case it's the same as
-    # config[:default_solr_parameters][:qt], so isn't actually neccesary.
-    config.add_search_field('subject') do |field|
-      # field.solr_parameters = { :'spellcheck.dictionary' => 'subject' }
-      field.qt = 'search'
-      field.solr_local_parameters = {
-        :qf => '$subject_qf',
-        :pf => '$subject_pf'
-      }
+    config.add_search_field('Topic') do |field|
+      field.solr_parameters = {:qf => "subject_topic_t"}
+      field.include_in_simple_select = false
+      field.include_in_advanced_search = true
+      # field.solr_parameters = { :'spellcheck.dictionary' => 'author' }
+      # field.solr_local_parameters = {
+      #   :qf => '$coll_qf',
+      #   :pf => '$coll_pf'
+      # }
     end
 
-    config.add_search_field('item_id') do |field|
-      field.label = 'Item ID'
+    config.add_search_field('Creator') do |field|
+      field.solr_parameters = {:qf => "name_t"}
+      field.include_in_simple_select = false
+      field.include_in_advanced_search = true
+      # field.solr_parameters = { :'spellcheck.dictionary' => 'author' }
+      # field.solr_local_parameters = {
+      #   :qf => '$coll_qf',
+      #   :pf => '$coll_pf'
+      # }
     end
+
+    config.add_search_field('Public Collection?') do |field|
+      field.solr_parameters = {:qf => "coll_ispublic"}
+      field.include_in_simple_select = false
+      field.include_in_advanced_search = true
+      # field.solr_parameters = { :'spellcheck.dictionary' => 'author' }
+      # field.solr_local_parameters = {
+      #   :qf => '$coll_qf',
+      #   :pf => '$coll_pf'
+      # }
+    end
+
+    # # Specifying a :qt only to show it's possible, and so our internal automated
+    # # tests can test it. In this case it's the same as
+    # # config[:default_solr_parameters][:qt], so isn't actually neccesary.
+    # config.add_search_field('source') do |field|
+    #   # field.solr_parameters = { :'spellcheck.dictionary' => 'subject' }
+    #   #field.qt = 'search'
+    #   # field.solr_local_parameters = {
+    #   #   :qf => '$source_qf',
+    #   #   :pf => '$source_pf'
+    #   # }
+    # end
+    #
+    # config.add_search_field('item_id') do |field|
+    #   field.label = 'Item ID'
+    # end
 
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and
