@@ -13,7 +13,8 @@
 development:
   #url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:8983/solr" %>
   #url: http://127.0.0.1:8983/solr/dcs
-  url: http://maple.dlib.indiana.edu:8285/solr
+  url: http://poplar.dlib.indiana.edu:8245/solr/dcs
+  #url: http://maple.dlib.indiana.edu:8285/solr
 test: &test
   url: <%= "http://127.0.0.1:#{ENV['TEST_JETTY_PORT'] || 8888}/solr" %>
 production:
