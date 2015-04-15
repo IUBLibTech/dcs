@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/cbeer/devise-guests.git
+  revision: 8ea012c1e3cd637d28158fbf0472e8c56a18a54c
+  specs:
+    devise-guests (0.4.0)
+      devise
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -83,8 +90,6 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
-    devise-guests (0.3.3)
-      devise
     erubis (2.7.0)
     eventmachine (1.0.7)
     execjs (2.4.0)
@@ -223,7 +228,7 @@ DEPENDENCIES
   blacklight_advanced_search
   coffee-rails (~> 4.1.0)
   devise
-  devise-guests (~> 0.3)
+  devise-guests!
   jbuilder (~> 2.0)
   jettywrapper (~> 1.7)
   jquery-rails
