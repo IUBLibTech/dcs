@@ -48,6 +48,7 @@ gem 'blacklight'
 gem 'jettywrapper', '~> 1.7'
 gem 'devise'
 gem 'devise-guests', '~> 0.3'
+gem 'omniauth-cas'
 gem 'blacklight-marc', '~> 5.0'
 
 gem 'blacklight_advanced_search'
