@@ -1,5 +1,7 @@
-<%- if has_thumbnail?(document) && tn = render_thumbnail_tag(document, {}, suppress_link: true) %>
-<div class="document-thumbnail">
-  <%= tn %>
-</div>  
+<%- if has_thumbnail?(document) && tn = render_thumbnail_tag(document, {}, {:counter => document_counter_with_offset(document_counter), :suppress_link => true}) %>
+    <div class="document-thumbnail">
+      <%= link_to document[:context_url_s].first do %>
+        <%= tn %>
+      <%- end %>
+    </div>
 <%- end %>
