@@ -16,7 +16,7 @@
           <span class="glyphicon glyphicon-search"></span>
         </button>
 
-        <%= link_to 'Advanced Search', advanced_search_path(params), :class=>'btn btn-primary advanced_search'%>
+        <%= link_to 'Advanced Search', advanced_search_path(params.symbolize_keys), {:class=>'btn btn-primary advanced_search'} %>
         </span>
       </div>
   <% end %>
