@@ -9,21 +9,18 @@ class CatalogController < ApplicationController
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
     # config.advanced_search[:qt] ||= 'advanced'
+    # config.advanced_search[:qt] ||= 'standard'
     config.advanced_search[:url_key] ||= 'advanced'
     config.advanced_search[:query_parser] ||= 'dismax'
     config.advanced_search[:form_solr_parameters] ||= {}
 
-    ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
+    ## Default parameters to send to solr for all search-like requests. See also SearchBuilder#processed_parameters
     config.default_solr_params = {
-      :qt => 'search',
+    #  :qt => 'search',
       :rows => 10
     }
 
-    config.advanced_search = {
-        :qt => 'standard'
-    }
-
-    # solr path which will be added to solr base url before the other solr params.
+        # solr path which will be added to solr base url before the other solr params.
     #config.solr_path = 'select'
 
     # items to show per page, each number in the array represent another option to choose from.
