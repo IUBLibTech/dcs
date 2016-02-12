@@ -44,13 +44,13 @@ group :development, :test do
 end
 
 
-gem 'blacklight', '~> 5.0'
-gem 'jettywrapper', '~> 1.7'
+gem 'blacklight'
+gem 'solr_wrapper', '>= 0.3'
 gem 'devise'
 gem 'devise-guests'
 gem 'omniauth-cas'
-gem 'blacklight-marc', '~> 5.0'
-
+gem 'rsolr', '~> 1.0.6'
+gem 'globalid'
 gem 'blacklight_advanced_search'
 
 #gem 'thin', '1.6.2'

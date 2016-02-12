@@ -44,27 +44,23 @@ GEM
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    blacklight (5.18.0)
+    blacklight (6.0.1)
       bootstrap-sass (~> 3.2)
       deprecation
+      globalid
       kaminari (>= 0.15)
       nokogiri (~> 1.6)
-      rails (>= 3.2.6, < 5)
+      rails (>= 4.1, < 5)
       rsolr (~> 1.0.11)
-    blacklight-marc (5.10.0)
-      blacklight (~> 5.10)
-      marc (>= 0.4.3, < 1.1)
-      rails
-    blacklight_advanced_search (5.2.1)
-      blacklight (~> 5.15)
+      twitter-typeahead-rails (~> 0.11)
+    blacklight_advanced_search (6.0.1)
+      blacklight (~> 6.0.1)
       parslet
     blankslate (3.1.3)
     bootstrap-sass (3.3.6)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
     builder (3.2.2)
-    childprocess (0.5.9)
-      ffi (~> 1.0, >= 1.0.11)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.1.x)
@@ -87,7 +83,6 @@ GEM
       devise
     erubis (2.7.0)
     execjs (2.6.0)
-    ffi (1.9.10)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     hashie (3.4.3)
@@ -95,11 +90,6 @@ GEM
     jbuilder (2.4.1)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
-    jettywrapper (1.8.3)
-      activesupport (>= 3.0.0)
-      childprocess
-      i18n
-      logger
     jquery-rails (4.1.0)
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
@@ -108,14 +98,10 @@ GEM
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
-    logger (1.2.8)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
-    marc (1.0.0)
-      scrub_rb (>= 1.0.1, < 2)
-      unf
     mime-types (2.99)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
@@ -166,6 +152,8 @@ GEM
       railties (>= 4.2.0, < 5.1)
     rsolr (1.0.13)
       builder (>= 2.1.2)
+    ruby-progressbar (1.7.5)
+    rubyzip (1.1.7)
     sass (3.4.21)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
@@ -173,10 +161,12 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    scrub_rb (1.0.1)
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    solr_wrapper (0.5.0)
+      ruby-progressbar
+      rubyzip
     sprockets (3.5.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -190,14 +180,15 @@ GEM
     tilt (2.0.2)
     turbolinks (2.5.3)
       coffee-rails
+    twitter-typeahead-rails (0.11.1)
+      actionpack (>= 3.1)
+      jquery-rails
+      railties (>= 3.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    unf (0.1.4)
-      unf_ext
-    unf_ext (0.0.7.2)
     warden (1.2.6)
       rack (>= 1.0)
     web-console (2.3.0)
@@ -210,19 +201,20 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  blacklight (~> 5.0)
-  blacklight-marc (~> 5.0)
+  blacklight
   blacklight_advanced_search
   coffee-rails (~> 4.1.0)
   devise
   devise-guests
+  globalid
   jbuilder (~> 2.0)
-  jettywrapper (~> 1.7)
   jquery-rails
   omniauth-cas
   rails (= 4.2.5.1)
+  rsolr (~> 1.0.6)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  solr_wrapper (>= 0.3)
   sqlite3
   turbolinks
   uglifier (>= 1.3.0)

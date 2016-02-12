@@ -11,9 +11,9 @@
 # how to start up solr, generally for automated testing. 
 
 development:
-  #url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:8983/solr" %>
+  url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:8983/solr/dcs" %>
   #url: http://127.0.0.1:8983/solr/dcs
-  url: http://poplar.dlib.indiana.edu:8245/solr/dcs
+  #url: http://poplar.dlib.indiana.edu:8245/solr/dcs
   #url: http://boron.dlib.indiana.edu:8210/solr/dcs
   #url: http://maple.dlib.indiana.edu:8285/solr
 test: &test
