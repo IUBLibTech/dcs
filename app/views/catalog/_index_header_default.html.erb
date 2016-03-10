@@ -12,7 +12,7 @@
          <%= t('blacklight.search.documents.counter', :counter => counter) if counter %>
          </span>
          <%#= link_to_document document, document_show_link_field(document), :counter => counter %>
-         <%= link_to document[:title_t].first, document[:context_url_s].first, :counter => counter %>
+         <%= link_to document[:title_display], document[:context_url_s], :counter => counter %>
         </h5>
 
         <% # bookmark functions for items/docs -%>

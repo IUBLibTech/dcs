@@ -1,22 +1,26 @@
 # -*- encoding : utf-8 -*-
 #
 class CatalogController < ApplicationController
-  include Blacklight::Marc::Catalog
+  include BlacklightAdvancedSearch::Controller
 
   include Blacklight::Catalog
 
   configure_blacklight do |config|
-    ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
+    # default advanced config values
+    config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
+    # config.advanced_search[:qt] ||= 'advanced'
+    # config.advanced_search[:qt] ||= 'standard'
+    config.advanced_search[:url_key] ||= 'advanced'
+    config.advanced_search[:query_parser] ||= 'dismax'
+    config.advanced_search[:form_solr_parameters] ||= {}
+
+    ## Default parameters to send to solr for all search-like requests. See also SearchBuilder#processed_parameters
     config.default_solr_params = {
-      :qt => 'search',
+    #  :qt => 'search',
       :rows => 10
     }
 
-    config.advanced_search = {
-        :qt => 'standard'
-    }
-
-    # solr path which will be added to solr base url before the other solr params.
+        # solr path which will be added to solr base url before the other solr params.
     #config.solr_path = 'select'
 
     # items to show per page, each number in the array represent another option to choose from.
@@ -35,7 +39,7 @@ class CatalogController < ApplicationController
 
     # solr field configuration for search results/index views
     config.index.title_field = 'title_t'
-    config.index.display_type_field = 'format'
+    config.index.display_type_field = 'format_s'
     config.index.show_link_field = 'context_url_s'
     config.index.thumbnail_field = 'preview_url_s'
 
@@ -64,15 +68,15 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the
     # facet bar
-    config.add_facet_field 'format', :label => 'Format'
-    config.add_facet_field 'coll_id', :label => 'Collection', :limit => 15
-    config.add_facet_field 'source', :label => 'Source', :limit => 15
+    config.add_facet_field 'format_s', :label => 'Format'
+    config.add_facet_field 'coll_id_s', :label => 'Collection', :limit => 15
+    config.add_facet_field 'source_s', :label => 'Source', :limit => 15
     # config.add_facet_field 'pub_date', :label => 'Publication Year', :single => true
     config.add_facet_field 'subject_topic_facet', :label => 'Topic', :limit => 15
     config.add_facet_field 'subject_geographic_facet', :label => 'Place', :limit => 15
     config.add_facet_field 'name_facet', :label => 'Creator', :limit => 15
     config.add_facet_field 'genre_facet', :label => 'Genre', :limit => 15
-    config.add_facet_field 'year', :label => 'Year', :limit => 15
+    config.add_facet_field 'year_s', :label => 'Year', :limit => 15
     # config.add_facet_field 'language_facet', :label => 'Language', :limit => true
     # config.add_facet_field 'lc_1letter_facet', :label => 'Call Number'
     # config.add_facet_field 'subject_era_facet', :label => 'Era'
@@ -94,22 +98,22 @@ class CatalogController < ApplicationController
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
     config.add_index_field 'title_t', :label => 'Title'
-    config.add_index_field 'coll_id', :label => 'Collection'
-    config.add_index_field 'source', :label => 'Source'
-    config.add_index_field 'format', :label => 'Format'
+    config.add_index_field 'coll_id_s', :label => 'Collection'
+    config.add_index_field 'source_s', :label => 'Source'
+    config.add_index_field 'format_s', :label => 'Format'
     # config.add_index_field 'subject_geographic_t', :label => 'Place'
     # config.add_index_field 'genre_t', :label => 'Genre'
     # config.add_index_field 'abstract_t', :label => 'Abstract'
-    config.add_index_field 'item_id', :label => 'Item ID'
+    config.add_index_field 'item_id_s', :label => 'Item ID'
 
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
     config.add_show_field 'title_t', :label => 'Title'
-    config.add_show_field 'coll_id', :label => 'Collection'
-    config.add_show_field 'source', :label => 'Source'
-    config.add_show_field 'format', :label => 'Format'
-    config.add_show_field 'item_id', :label => 'Item ID'
+    config.add_show_field 'coll_id_s', :label => 'Collection'
+    config.add_show_field 'source_s', :label => 'Source'
+    config.add_show_field 'format_s', :label => 'Format'
+    config.add_show_field 'item_id_s', :label => 'Item ID'
 
 
     # "fielded" search configuration. Used by pulldown among other places.
@@ -136,7 +140,7 @@ class CatalogController < ApplicationController
     end
 
     config.add_search_field 'All Fields' do |field|
-      field.solr_parameters = {:qf => "metatext"}
+      field.solr_parameters = {:qf => "metatext_s"}
       field.include_in_simple_select = false
       field.include_in_advanced_search = true
     end
@@ -164,7 +168,7 @@ class CatalogController < ApplicationController
     end
 
     config.add_search_field('Collection') do |field|
-      field.solr_parameters = {:qf => "coll_id"}
+      field.solr_parameters = {:qf => "coll_id_s"}
       field.include_in_simple_select = false
       field.include_in_advanced_search = true
       # field.solr_parameters = { :'spellcheck.dictionary' => 'author' }
@@ -197,7 +201,7 @@ class CatalogController < ApplicationController
     end
 
     config.add_search_field('Public Collection?') do |field|
-      field.solr_parameters = {:qf => "coll_ispublic"}
+      field.solr_parameters = {:qf => "coll_ispublic_s"}
       field.include_in_simple_select = false
       field.include_in_advanced_search = true
       # field.solr_parameters = { :'spellcheck.dictionary' => 'author' }
