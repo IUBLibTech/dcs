@@ -653,7 +653,7 @@
        handleSelect="true" is not recommended for new users, but is the default
        for backwards compatibility
     -->
-  <requestDispatcher handleSelect="false" >
+  <requestDispatcher handleSelect="true" >
     <!-- Request Parsing
 
          These settings indicate how Solr Requests may be parsed, and
@@ -773,7 +773,7 @@
        queries across multiple shards
     -->
   
-  <requestHandler name="/search" class="solr.SearchHandler" default="true">
+  <requestHandler name="search" class="solr.SearchHandler" default="true">
     <!-- default values for query parameters can be specified, these
     will be overridden by parameters in the request
     -->
@@ -1009,7 +1009,7 @@
     </lst>
   </requestHandler>
   
-  <requestHandler name="/select" class="solr.SearchHandler">
+  <requestHandler name="/standardselect" class="solr.SearchHandler">
     <!-- default values for query parameters can be specified, these
          will be overridden by parameters in the request
       -->

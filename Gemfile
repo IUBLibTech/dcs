@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5.1'
+gem 'rails', '4.2.6'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -45,11 +45,11 @@ end
 
 
 gem 'blacklight'
-gem 'solr_wrapper', '>= 0.3'
+gem 'solr_wrapper'
 gem 'devise'
 gem 'devise-guests'
 gem 'omniauth-cas'
-gem 'rsolr', '~> 1.0.6'
+gem 'rsolr'
 gem 'globalid'
 gem 'blacklight_advanced_search'
 
