@@ -53,4 +53,4 @@ gem 'rsolr'
 gem 'globalid'
 gem 'blacklight_advanced_search'
 
-#gem 'thin', '1.6.2'
+gem 'thin'

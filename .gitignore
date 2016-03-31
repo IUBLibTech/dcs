@@ -66,3 +66,11 @@ atlassian-ide-plugin.xml
 com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
+
+# Ignore precompiled assets, if present
+/public/assets
+
+# Ignore configuration files that can contain sensitive production settings
+config/blacklight.yml
+config/initializers/devise.rb
+config/secrets.yml
