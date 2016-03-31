@@ -9,14 +9,14 @@ class CatalogController < ApplicationController
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
     # config.advanced_search[:qt] ||= 'advanced'
-    # config.advanced_search[:qt] ||= 'standard'
+    config.advanced_search[:qt] ||= 'standard'
     config.advanced_search[:url_key] ||= 'advanced'
     config.advanced_search[:query_parser] ||= 'dismax'
     config.advanced_search[:form_solr_parameters] ||= {}
 
     ## Default parameters to send to solr for all search-like requests. See also SearchBuilder#processed_parameters
     config.default_solr_params = {
-    #  :qt => 'search',
+      :qt => 'search',
       :rows => 10
     }
 
@@ -68,8 +68,8 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the
     # facet bar
-    config.add_facet_field 'format_s', :label => 'Format'
-    config.add_facet_field 'coll_id_s', :label => 'Collection', :limit => 15
+    config.add_facet_field 'format', :label => 'Format'
+    config.add_facet_field 'coll_name_s', :label => 'Collection', :limit => 15
     config.add_facet_field 'source_s', :label => 'Source', :limit => 15
     # config.add_facet_field 'pub_date', :label => 'Publication Year', :single => true
     config.add_facet_field 'subject_topic_facet', :label => 'Topic', :limit => 15
@@ -98,13 +98,14 @@ class CatalogController < ApplicationController
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
     config.add_index_field 'title_t', :label => 'Title'
-    config.add_index_field 'coll_id_s', :label => 'Collection'
+    config.add_index_field 'coll_name_s', :label => 'Collection'
     config.add_index_field 'source_s', :label => 'Source'
     config.add_index_field 'format_s', :label => 'Format'
     # config.add_index_field 'subject_geographic_t', :label => 'Place'
     # config.add_index_field 'genre_t', :label => 'Genre'
     # config.add_index_field 'abstract_t', :label => 'Abstract'
     config.add_index_field 'item_id_s', :label => 'Item ID'
+    config.add_index_field 'id', :label => 'PID'
 
 
     # solr fields to be displayed in the show (single result) view

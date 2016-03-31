@@ -653,7 +653,7 @@
        handleSelect="true" is not recommended for new users, but is the default
        for backwards compatibility
     -->
-  <requestDispatcher handleSelect="false" >
+  <requestDispatcher handleSelect="true" >
     <!-- Request Parsing
 
          These settings indicate how Solr Requests may be parsed, and
@@ -773,7 +773,7 @@
        queries across multiple shards
     -->
   
-  <requestHandler name="/search" class="solr.SearchHandler" default="true">
+  <requestHandler name="search" class="solr.SearchHandler" default="true">
     <!-- default values for query parameters can be specified, these
     will be overridden by parameters in the request
     -->
@@ -897,7 +897,7 @@
       <float name="tie">0.01</float>
       
       <!-- NOT using marc_display because it is large and will slow things down for search results -->
-      <str name="fl">
+      <!--<str name="fl">
         id, 
         score,
         author_display,
@@ -919,6 +919,9 @@
         subtitle_vern_display,
         url_fulltext_display,
         url_suppl_display,
+      </str>-->
+      <str name="fl">
+        *, score
       </str>
       
       <str name="facet">true</str>
@@ -1009,7 +1012,7 @@
     </lst>
   </requestHandler>
   
-  <requestHandler name="/select" class="solr.SearchHandler">
+  <requestHandler name="/standard" class="solr.SearchHandler">
     <!-- default values for query parameters can be specified, these
          will be overridden by parameters in the request
       -->
@@ -1861,7 +1864,7 @@
 
   <!-- Legacy config for the admin interface -->
   <admin>
-    <defaultQuery>*:*</defaultQuery>
+    <defaultQuery></defaultQuery>
   </admin>
 
 </config>
