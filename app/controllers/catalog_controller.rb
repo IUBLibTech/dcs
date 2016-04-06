@@ -99,11 +99,10 @@ class CatalogController < ApplicationController
     #   The ordering of the field names is the order of the display
     config.add_index_field 'title_t', :label => 'Title'
     config.add_index_field 'coll_name_s', :label => 'Collection'
+    config.add_index_field 'format_s', :label => 'Creator'
+    config.add_index_field 'w3c_taken_date_s', :label => 'Date'
     config.add_index_field 'source_s', :label => 'Source'
-    config.add_index_field 'format_s', :label => 'Format'
-    # config.add_index_field 'subject_geographic_t', :label => 'Place'
-    # config.add_index_field 'genre_t', :label => 'Genre'
-    # config.add_index_field 'abstract_t', :label => 'Abstract'
+    config.add_index_field 'format', :label => 'Format'
     config.add_index_field 'item_id_s', :label => 'Item ID'
     config.add_index_field 'id', :label => 'PID'
 
@@ -232,11 +231,12 @@ class CatalogController < ApplicationController
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
     # except in the relevancy case).
-    config.add_sort_field 'score desc', :label => 'relevance'
-    # config.add_sort_field 'score desc, year desc, title_sort_s asc', :label => 'relevance'
-    # config.add_sort_field 'year desc, title_sort_s asc', :label => 'year'
-    # config.add_sort_field 'author_sort asc, title_sort_s asc', :label => 'author'
-    # config.add_sort_field 'title_sort_s asc, year desc', :label => 'title'
+    config.add_sort_field 'score desc, title_sort_s asc, year_s desc', :label => 'relevance'
+    config.add_sort_field 'title_sort_s asc, year_s desc', :label => 'title'
+    config.add_sort_field 'year_s desc, title_sort_s asc', :label => 'year (newest first)'
+    config.add_sort_field 'year_s asc, title_sort_s asc', :label => 'year (oldest first)'
+    config.add_sort_field 'timestamp desc', :label => 'recently updated'
+
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
