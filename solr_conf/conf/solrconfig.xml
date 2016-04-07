@@ -815,7 +815,7 @@
         title_series_unstem_search^25
         title_series_t^10
         isbn_t
-        text
+        _text_
       </str>
       <str name="pf">
         title_unstem_search^1000000
@@ -838,7 +838,7 @@
         subject_addl_t^500
         title_series_unstem_search^250
         title_series_t^100
-        text^10
+        _text_^10
       </str>
       <str name="author_qf">
         author_unstem_search^200
