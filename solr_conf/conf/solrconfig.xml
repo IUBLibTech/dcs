@@ -1758,6 +1758,14 @@
     </updateRequestProcessorChain>
   -->
 
+  <updateRequestProcessorChain name="skip-empty" default="true">
+    <processor class="TrimFieldUpdateProcessorFactory" />
+    <processor class="RemoveBlankFieldUpdateProcessorFactory" />
+
+    <processor class="solr.LogUpdateProcessorFactory" />
+    <processor class="solr.RunUpdateProcessorFactory" />
+  </updateRequestProcessorChain>
+
   <!-- Response Writers
 
        http://wiki.apache.org/solr/QueryResponseWriter
