@@ -68,15 +68,18 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the
     # facet bar
-    config.add_facet_field 'format', :label => 'Format'
-    config.add_facet_field 'coll_name_s', :label => 'Collection', :limit => 15
-    config.add_facet_field 'source_s', :label => 'Source', :limit => 15
+    config.add_facet_field 'format_facet', :label => 'Format'
+    config.add_facet_field 'coll_name_facet', :label => 'Collection', :limit => 15
+    config.add_facet_field 'source_facet', :label => 'Source', :limit => 15
     # config.add_facet_field 'pub_date', :label => 'Publication Year', :single => true
     config.add_facet_field 'subject_topic_facet', :label => 'Topic', :limit => 15
     config.add_facet_field 'subject_geographic_facet', :label => 'Place', :limit => 15
     config.add_facet_field 'name_facet', :label => 'Creator', :limit => 15
     config.add_facet_field 'genre_facet', :label => 'Genre', :limit => 15
-    config.add_facet_field 'year_s', :label => 'Year', :limit => 15
+    config.add_facet_field 'year_facet', :label => 'Year', :limit => 15
+    config.add_facet_field 'subject_city_facet', :label => 'City', :limit => 15
+    config.add_facet_field 'subject_state_facet', :label => 'State', :limit => 15
+
     # config.add_facet_field 'language_facet', :label => 'Language', :limit => true
     # config.add_facet_field 'lc_1letter_facet', :label => 'Call Number'
     # config.add_facet_field 'subject_era_facet', :label => 'Era'
@@ -168,7 +171,7 @@ class CatalogController < ApplicationController
     end
 
     config.add_search_field('Collection') do |field|
-      field.solr_parameters = {:qf => "coll_id_s"}
+      field.solr_parameters = {:qf => "coll_name_s"}
       field.include_in_simple_select = false
       field.include_in_advanced_search = true
       # field.solr_parameters = { :'spellcheck.dictionary' => 'author' }
@@ -200,16 +203,16 @@ class CatalogController < ApplicationController
       # }
     end
 
-    config.add_search_field('Public Collection?') do |field|
-      field.solr_parameters = {:qf => "coll_ispublic_s"}
-      field.include_in_simple_select = false
-      field.include_in_advanced_search = true
-      # field.solr_parameters = { :'spellcheck.dictionary' => 'author' }
-      # field.solr_local_parameters = {
-      #   :qf => '$coll_qf',
-      #   :pf => '$coll_pf'
-      # }
-    end
+    # config.add_search_field('Public Collection?') do |field|
+    #   field.solr_parameters = {:qf => "coll_ispublic_s"}
+    #   field.include_in_simple_select = false
+    #   field.include_in_advanced_search = true
+    #   # field.solr_parameters = { :'spellcheck.dictionary' => 'author' }
+    #   # field.solr_local_parameters = {
+    #   #   :qf => '$coll_qf',
+    #   #   :pf => '$coll_pf'
+    #   # }
+    # end
 
     # # Specifying a :qt only to show it's possible, and so our internal automated
     # # tests can test it. In this case it's the same as

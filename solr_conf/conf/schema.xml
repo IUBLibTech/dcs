@@ -244,9 +244,16 @@
     
     <!-- sort fields -->
     <copyField source="pub_date" dest="pub_date_sort"/>
-    
-    
-    <!-- spellcheck fields -->
+
+    <!-- facet fields -->
+    <copyField source="coll_name_s" dest="coll_name_facet"/>
+    <copyField source="source_s" dest="source_facet"/>
+    <copyField source="year_s" dest="year_facet"/>
+    <copyField source="format" dest="format_facet"/>
+    <copyField source="subject_city_t" dest="subject_city_facet"/>
+    <copyField source="subject_state_t" dest="subject_state_facet"/>
+
+  <!-- spellcheck fields -->
     <!-- default spell check;  should match fields for default request handler -->
     <!-- it won't work with a copy of a copy field -->
     <copyField source="*_t" dest="spell"/>
